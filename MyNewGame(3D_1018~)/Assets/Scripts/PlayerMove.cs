@@ -5,46 +5,63 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 3;
-    [SerializeField] float _jumpSpeed = 3;
+    [SerializeField] float _jumpPower = 3;
     Rigidbody _rb = default;
+    Animator _anim = default;
     bool _isGrounded = true;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
     {
+        // 入力を受け付ける
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 dir = Vector3.forward * v + Vector3.right * h;
-        // カメラのローカル座標系を基準に dir を変換する
+        // 入力された方向を「カメラを基準とした XZ 平面上のベクトル」に変換する
+        Vector3 dir = new Vector3(h, 0, v);
         dir = Camera.main.transform.TransformDirection(dir);
-        // カメラは斜め下に向いているので、Y 軸の値を 0 にして「XZ 平面上のベクトル」にする
         dir.y = 0;
-        // 移動の入力がない時は回転させない。入力がある時はその方向にキャラクターを向ける。
-        if (dir != Vector3.zero) this.transform.forward = dir;
-        // 水平方向（XZ平面上）の速度を計算する
-        dir = dir.normalized * _moveSpeed;
-        // 垂直方向の速度を計算する
-        float y = _rb.velocity.y;
 
-        if (Input.GetButtonDown("Jump") && _isGrounded)
+        // キャラクターを「入力された方向」に向ける
+        if (dir != Vector3.zero)
         {
-            y = _jumpSpeed;
+            this.transform.forward = dir;
         }
 
-        _rb.velocity = dir * _moveSpeed + Vector3.up * y;
+        // Y 軸方向の速度を保ちながら、速度ベクトルを求めてセットする
+        Vector3 velocity = dir.normalized * _moveSpeed;
+        velocity.y = _rb.velocity.y;
+        _rb.velocity = velocity;
+
+        // ジャンプ処理
+        if (Input.GetButtonDown("Jump") && _isGrounded)
+        {
+            _rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void LateUpdate()
+    {
+        if (_anim)
+        {
+            _anim.SetBool("IsGrounded", _isGrounded);
+            Vector3 walkSpeed = _rb.velocity;
+            walkSpeed.y = 0;
+            _anim.SetFloat("Speed", walkSpeed.magnitude);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         _isGrounded = true;
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         _isGrounded = false;
     }
