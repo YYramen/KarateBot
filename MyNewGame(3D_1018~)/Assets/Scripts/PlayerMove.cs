@@ -56,12 +56,15 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        _isGrounded = true;
+        if(collision.gameObject.tag == "Ground")
+        {
+            _isGrounded = true;
+        }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
         _isGrounded = false;
     }
