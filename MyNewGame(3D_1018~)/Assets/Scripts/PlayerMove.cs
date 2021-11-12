@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody _rb = default;
     Animator _anim = default;
     bool _isGrounded = true;
+    bool _isPunch = false;
 
     void Start()
     {
@@ -43,12 +44,28 @@ public class PlayerMove : MonoBehaviour
         {
             _rb.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
         }
+
+        // 攻撃
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Punch();
+        }
+    }
+
+    void Punch()
+    {
+        if (_isPunch == false)
+        {
+            _anim.SetTrigger("Punch");
+        }
+        
     }
 
     private void LateUpdate()
     {
         if (_anim)
         {
+            _anim.SetBool("Punch", _isPunch);
             _anim.SetBool("IsGrounded", _isGrounded);
             Vector3 walkSpeed = _rb.velocity;
             walkSpeed.y = 0;
@@ -58,7 +75,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             _isGrounded = true;
         }
