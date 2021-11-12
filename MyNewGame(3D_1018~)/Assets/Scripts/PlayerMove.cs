@@ -9,7 +9,8 @@ public class PlayerMove : MonoBehaviour
     Rigidbody _rb = default;
     Animator _anim = default;
     bool _isGrounded = true;
-    bool _isPunch = false;
+    bool _isAttack1 = false;
+    bool _isAttack2 = false;
 
     void Start()
     {
@@ -48,24 +49,37 @@ public class PlayerMove : MonoBehaviour
         // 攻撃
         if (Input.GetButtonDown("Fire1"))
         {
-            Punch();
+            Attack1();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Attack2();
         }
     }
 
-    void Punch()
+    void Attack1()
     {
-        if (_isPunch == false)
+        if (_isAttack1 == false)
         {
-            _anim.SetTrigger("Punch");
+            _anim.SetTrigger("Attack1");
         }
-        
+    }
+
+    void Attack2()
+    {
+        if(_isAttack2 == false)
+        {
+            _anim.SetTrigger("Attack2");
+        }
     }
 
     private void LateUpdate()
     {
         if (_anim)
         {
-            _anim.SetBool("Punch", _isPunch);
+            _anim.SetBool("Attack2", _isAttack2);
+            _anim.SetBool("Attack1", _isAttack1);
             _anim.SetBool("IsGrounded", _isGrounded);
             Vector3 walkSpeed = _rb.velocity;
             walkSpeed.y = 0;
