@@ -62,7 +62,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (_isAttack1 == false)
         {
-            _anim.SetTrigger("Attack1");
+            _anim.SetBool("Attack1", true);
         }
     }
 
@@ -70,7 +70,7 @@ public class PlayerMove : MonoBehaviour
     {
         if(_isAttack2 == false)
         {
-            _anim.SetTrigger("Attack2");
+            _anim.SetBool("Attack2", true);
         }
     }
 

@@ -65,8 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CameraController.cs" />
-    <Compile Include="Assets\ExplosiveLLC\Demo Elements\Code\CameraController.cs" />
-    <Compile Include="Assets\ExplosiveLLC\Demo Elements\Code\GUIControls.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\Scripts\Gravity.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\Scripts\PlayerCamera.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\Scripts\PlayerInputController.cs" />
