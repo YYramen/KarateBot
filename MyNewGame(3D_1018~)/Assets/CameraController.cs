@@ -53,16 +53,13 @@ public class CameraController : MonoBehaviour
         switch (_currentCamType)
         {
             case CurrentCamType.None:
-                _camera1.Priority = 11;
-                _camera2.Priority = 0;
+                _camera1.MoveToTopOfPrioritySubqueue();
                 break;
             case CurrentCamType.Cam1:
-                _camera2.Priority = 11;
-                _camera1.Priority = 0;
+                _camera2.MoveToTopOfPrioritySubqueue();
                 break;
             case CurrentCamType.Cam2:
-                _camera1.Priority = 11;
-                _camera2.Priority = 0;
+                _camera1.MoveToTopOfPrioritySubqueue();
                 break;
         }
         _currentCamType = _nextCamType;
