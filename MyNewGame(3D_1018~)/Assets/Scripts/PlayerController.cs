@@ -9,6 +9,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
+    [Tooltip("初期位置")]
+    [SerializeField] Vector3 _firstPosition;
     [Tooltip("移動先の位置情報")]
     [SerializeField] Transform _target = default;
     [Tooltip("移動先の座標を保存する変数")]
@@ -36,6 +38,13 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Jump", _agent.isOnOffMeshLink);
+        }
+
+        // Escape キーを押したら初期位置に戻る
+        if(Input.GetButtonDown("Cancel"))
+        {
+            Debug.Log("Escapeが押された、初期位置に戻る");
+            this.transform.position = _firstPosition;
         }
     }
 }

@@ -14,6 +14,8 @@ public class MarkerController : MonoBehaviour
     [SerializeField] GameObject _marker;
     /// <summary>飛ばした Ray が当たった座標に m_marker を移動する際、Ray が当たった座標からどれくらいずらした場所に移動するかを設定する</summary>
     [SerializeField] Vector3 _markerOffset = Vector3.up * 0.01f;
+    [Tooltip("_markerの初期位置")]
+    Vector3 _firstPosition = default;
 
     void Update()
     {
@@ -39,6 +41,11 @@ public class MarkerController : MonoBehaviour
                 // Ray が当たらなかった場合は、Ray の方向に白い線を引く
                 Debug.DrawRay(ray.origin, ray.direction * _debugRayLength);
             }
+        }
+
+        if(Input.GetButtonDown("Cancel"))
+        {
+            _marker.transform.position = _firstPosition;
         }
     }
 }
