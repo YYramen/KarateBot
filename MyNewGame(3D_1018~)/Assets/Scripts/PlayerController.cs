@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Jump", _agent.isOnOffMeshLink);
+            _anim.SetTrigger("Attack");
         }
 
         // Escape キーを押したら初期位置に戻る
