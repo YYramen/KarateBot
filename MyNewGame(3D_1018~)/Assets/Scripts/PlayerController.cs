@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     Vector3 _changedTargetPosition;
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
+
     NavMeshAgent _agent = default;
     void Start()
     {
@@ -41,10 +42,20 @@ public class PlayerController : MonoBehaviour
         }
 
         // Escape キーを押したら初期位置に戻る
-        if(Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel"))
         {
             Debug.Log("Escapeが押された、初期位置に戻る");
             this.transform.position = _firstPosition;
         }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            Attack();
+        }
+    }
+
+    void Attack()
+    {
+        _anim.SetTrigger("Attack");
     }
 }
