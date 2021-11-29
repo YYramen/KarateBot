@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _target = default;
     [Tooltip("移動先の座標を保存する変数")]
     Vector3 _changedTargetPosition;
+    Collider _enemyCollider = default;
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
+
 
     bool _isAttack = false;
     NavMeshAgent _agent = default;
@@ -55,14 +57,16 @@ public class PlayerController : MonoBehaviour
     {
         if (_isAttack == true)
         {
+            //this.transform.forward = _enemyCollider.transform.position;
             _anim.SetBool("Attack", true);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
+            this.transform.LookAt(other.transform.position);
             Debug.Log($"{other.name}と接触");
             _isAttack = true;
         }
