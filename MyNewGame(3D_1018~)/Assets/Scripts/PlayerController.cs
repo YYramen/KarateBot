@@ -15,11 +15,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform _target = default;
     [Tooltip("移動先の座標を保存する変数")]
     Vector3 _changedTargetPosition;
-    Collider _enemyCollider = default;
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
 
-
+    bool[] skills = new bool[4];
     bool _isAttack = false;
     NavMeshAgent _agent = default;
     void Start()
@@ -51,14 +50,29 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Escapeが押された、初期位置に戻る");
             this.transform.position = _firstPosition;
         }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            Skill(0);
+        }
     }
 
-    void Attack()
+    void Skill(int skill)
     {
-        if (_isAttack == true)
+        switch (skill)
         {
-            //this.transform.forward = _enemyCollider.transform.position;
-            _anim.SetBool("Attack", true);
+            case 0:
+                _anim.SetTrigger("Skill1");
+                break;
+            case 1:
+                _anim.SetTrigger("Skill2");
+                break;
+            case 2:
+                _anim.SetTrigger("Skill3");
+                break;
+            case 3:
+                _anim.SetTrigger("Skill4");
+                break;
         }
     }
 

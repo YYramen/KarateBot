@@ -92,6 +92,7 @@
     <Compile Include="Assets\Fighter Pack Bundle FREE\Code\FighterAnimationDemoFREE.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraController2.cs" />
+    <Compile Include="Assets\Scripts\CreateUnko.cs" />
     <Compile Include="Assets\Scripts\LookAtIK.cs" />
     <Compile Include="Assets\Scripts\MarkerController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
