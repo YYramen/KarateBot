@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
 
+    bool _isAttack = false;
     NavMeshAgent _agent = default;
     void Start()
     {
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Jump", _agent.isOnOffMeshLink);
-            _anim.SetTrigger("Attack");
+            _anim.SetBool("Attack", _isAttack);
         }
 
         // Escape キーを押したら初期位置に戻る
@@ -48,15 +49,31 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Escapeが押された、初期位置に戻る");
             this.transform.position = _firstPosition;
         }
-
-        if (Input.GetButtonDown("Fire2"))
-        {
-            Attack();
-        }
     }
 
     void Attack()
     {
-        _anim.SetTrigger("Attack");
+        if (_isAttack == true)
+        {
+            _anim.SetBool("Attack", true);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log($"{other.name}と接触");
+            _isAttack = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Debug.Log($"{other.name}から離れた");
+            _isAttack = false;
+        }
     }
 }
