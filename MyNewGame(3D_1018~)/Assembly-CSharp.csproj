@@ -90,6 +90,7 @@
     <Compile Include="Assets\ExplosiveLLC\Warrior FREE\Code\WarriorTiming.cs" />
     <Compile Include="Assets\Fighter Pack Bundle FREE\Code\CameraControl.cs" />
     <Compile Include="Assets\Fighter Pack Bundle FREE\Code\FighterAnimationDemoFREE.cs" />
+    <Compile Include="Assets\Scripts\AreaController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraController2.cs" />
     <Compile Include="Assets\Scripts\CreateUnko.cs" />

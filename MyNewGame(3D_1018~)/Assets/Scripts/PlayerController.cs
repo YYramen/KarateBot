@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     Vector3 _changedTargetPosition;
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
-
+    
     bool[] skills = new bool[4];
     bool _isAttack = false;
     NavMeshAgent _agent = default;
@@ -51,9 +51,22 @@ public class PlayerController : MonoBehaviour
             this.transform.position = _firstPosition;
         }
 
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Skill(0);
+            Debug.Log("Qスキルを発動");
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Skill(1);
+            Debug.Log("Wスキルを発動");
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Skill(2);
+            Debug.Log("Eスキルを発動");
         }
     }
 
