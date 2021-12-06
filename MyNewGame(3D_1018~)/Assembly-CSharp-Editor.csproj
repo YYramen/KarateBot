@@ -64,7 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ExplosiveLLC\Editor\SetupInputLayers.cs" />
+    <Compile Include="Assets\DefaultPlayables\Editor\TimelinePlayableWizard.cs" />
+    <Compile Include="Assets\DefaultPlayables\LightControl\Editor\LightControlDrawer.cs" />
+    <Compile Include="Assets\DefaultPlayables\ScreenFader\Editor\ScreenFaderDrawer.cs" />
+    <Compile Include="Assets\DefaultPlayables\TextSwitcher\Editor\TextSwitcherDrawer.cs" />
+    <Compile Include="Assets\DefaultPlayables\TimeDilation\Editor\TimeDilationDrawer.cs" />
+    <Compile Include="Assets\DefaultPlayables\TransformTween\Editor\TransformTweenDrawer.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.25f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
