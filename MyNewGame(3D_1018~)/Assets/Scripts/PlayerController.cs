@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     Vector3 _changedTargetPosition;
     [Tooltip("プレイヤーのアニメーションを指定")]
     [SerializeField] Animator _anim = default;
+    [Tooltip("通常攻撃のインターバル")]
+    [SerializeField] float _interval = 3f;
+    [Tooltip("インターバルの初期値")]
+    float _firstInterval = 0f;
     
     bool[] skills = new bool[4];
     bool _isAttack = false;
@@ -93,9 +97,15 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            this.transform.LookAt(other.transform.position);
-            Debug.Log($"{other.name}と接触");
             _isAttack = true;
+            Debug.Log($"{other.name}と接触");
+            this.transform.LookAt(other.transform.position);
+            _firstInterval += Time.deltaTime;
+            if(_firstInterval > _interval)
+            {
+                Debug.Log("通常攻撃");
+                _firstInterval = 0f;
+            }
         }
     }
 
@@ -104,6 +114,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Debug.Log($"{other.name}から離れた");
+            _firstInterval = 0f;
             _isAttack = false;
         }
     }
