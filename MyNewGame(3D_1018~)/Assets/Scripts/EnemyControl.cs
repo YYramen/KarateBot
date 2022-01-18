@@ -6,17 +6,21 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyControl : MonoBehaviour
 {
+    [SerializeField] Animator _anim = default;
     [SerializeField] GameObject _player = default;
-    NavMeshAgent _navMeshAgent;
     [SerializeField] float _enemyZone = 3f;
-    //[SerializeField] float _moveSpeed = 0.1f;
+    [SerializeField] float _interval = 5f;
+    NavMeshAgent _agent;
+
+    float _firstAttack = 0f;
     float _distance = 0f;
-    //float firstY = 0;
+    bool _isAttack = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        //firstY = gameObject.transform.position.y;
-        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _anim = GetComponent<Animator>();
+        _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -26,18 +30,39 @@ public class EnemyControl : MonoBehaviour
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
         if (_distance < _enemyZone)
         {
-            _navMeshAgent.destination = _player.transform.position;
+            _agent.destination = _player.transform.position;
         }
-            //{
-            //    Vector3 dir = default;
 
-            //    if (_player)
-            //    {
-            //        dir = _player.transform.position - this.transform.position;
-            //    }
+        if(_anim)
+        {
+            _anim.SetFloat("Speed", _agent.velocity.magnitude);
+            _anim.SetBool("Attack", _isAttack);
+        }
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            //_isAttack = true;
+            this.transform.LookAt(other.transform.position);
+            _firstAttack += Time.deltaTime;
+            if (_firstAttack > _interval)
+            {
+                _isAttack = true;
+                Debug.Log("ìGÇÃí èÌçUåÇ");
+                _firstAttack = 0f;
+            }
+        }
+    }
 
-            //this.transform.Translate(new Vector3(dir.x ,0 , dir.z) * _moveSpeed);//ÉvÉåÉCÉÑÅ[Ç…ãﬂÇ√Ç≠èàóù
-            
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log($"{other.name}Ç©ÇÁó£ÇÍÇΩ");
+            _firstAttack = 0f;
+            _isAttack = false;
+        }
     }
 }

@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("Attack", _isAttack);
         }
 
-        // Escape キーを押したら初期位置に戻る
+        // Escape キーを押したら初期位置に戻る(多分これそのうち消す)
         if (Input.GetButtonDown("Cancel"))
         {
             Debug.Log("Escapeが押された、初期位置に戻る");
