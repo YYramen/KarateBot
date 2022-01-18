@@ -19776,12 +19776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &679899982282305798 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 6169779733304167662, guid: eb97a94ea054b96458126bf92a46be64,
-    type: 3}
-  m_PrefabInstance: {fileID: 6696862081930821096}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2254943000814163741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19974,24 +19968,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1383910353425090279, guid: eb97a94ea054b96458126bf92a46be64,
         type: 3}
-      propertyPath: _anim
-      value: 
-      objectReference: {fileID: 679899982282305798}
-    - target: {fileID: 1383910353425090279, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 1422926447}
-    - target: {fileID: 3477798589128795579, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3477798589128795579, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6169779733294293878, guid: eb97a94ea054b96458126bf92a46be64,
         type: 3}
       propertyPath: m_RootOrder
@@ -20051,26 +20030,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6169779733294661270, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6169779733304167662, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: ea009f96a884b384c86bdb3e54bf69e7, type: 2}
-    - target: {fileID: 8275003449735203223, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_Speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8275003449735203223, guid: eb97a94ea054b96458126bf92a46be64,
-        type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb97a94ea054b96458126bf92a46be64, type: 3}
