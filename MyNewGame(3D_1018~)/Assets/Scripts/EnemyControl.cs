@@ -8,7 +8,7 @@ public class EnemyControl : MonoBehaviour
 {
     [SerializeField] Animator _anim = default;
     [SerializeField] GameObject _player = default;
-    [SerializeField] float _enemyZone = 3f;
+    [SerializeField] float _enemySight = 3f;
     [SerializeField] float _interval = 5f;
     NavMeshAgent _agent;
 
@@ -28,7 +28,7 @@ public class EnemyControl : MonoBehaviour
     void Update()
     {
         _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        if (_distance < _enemyZone)
+        if (_distance < _enemySight)
         {
             _agent.destination = _player.transform.position;
         }
