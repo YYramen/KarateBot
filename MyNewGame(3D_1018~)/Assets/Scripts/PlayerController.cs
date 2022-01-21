@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 /// <summary>
 /// プレイヤーを移動させるためのコンポーネント
@@ -25,10 +26,15 @@ public class PlayerController : MonoBehaviour
 
     // スキル関連
     bool[] skills = new bool[4];
+    [SerializeField] Slider _slider1 = default;
+    [SerializeField] Slider _slider2 = default;
+    [SerializeField] Slider _slider3 = default;
     [SerializeField] float _skillTimer1 = 0f;
     [SerializeField] float _skillTimer2 = 0f;
     [SerializeField] float _skillTimer3 = 0f;
-    [SerializeField] float _skillInterval = 3f;
+    [SerializeField] float _skillInterval1 = 3f;
+    [SerializeField] float _skillInterval2 = 3f;
+    [SerializeField] float _skillInterval3 = 3f;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -42,10 +48,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _skillTimer1 += Time.deltaTime;
-        _skillTimer2 += Time.deltaTime;
-        _skillTimer3 += Time.deltaTime;
-
         // プレイヤーの基本動作(移動、通常攻撃)
         // m_target が移動したら Navmesh Agent を使って移動させる
         if (Vector3.Distance(_changedTargetPosition, _target.position) > Mathf.Epsilon) // _target が移動したら
@@ -70,36 +72,48 @@ public class PlayerController : MonoBehaviour
         }
 
         // スキル関係
+        if (_slider1.value != 1)
+        {
+            _slider1.value += 1 / _skillInterval1 * Time.deltaTime;
+        }
+
+        if (_slider2.value != 1)
+        {
+            _slider2.value += 1 / _skillInterval2 * Time.deltaTime;
+        }
+
+        if (_slider3.value != 1)
+        {
+            _slider3.value += 1 / _skillInterval3 * Time.deltaTime;
+        }
+
         if (Input.GetButtonDown("QSkill"))
         {
-            Debug.Log("Qが押された");
-            if (_skillInterval < _skillTimer1)
+            if (_slider1.value >= 1)
             {
                 Skill(0);
                 Debug.Log("Qスキルを発動");
-                _skillTimer1 = 0f;
+                _slider1.value = 0;
             }
         }
 
         if (Input.GetButtonDown("WSkill"))
         {
-            Debug.Log("Wが押された");
-            if (_skillInterval < _skillTimer2)
+            if (_slider2.value >= 1)
             {
                 Skill(1);
                 Debug.Log("Wスキルを発動");
-                _skillTimer2 = 0f;
+                _slider2.value = 0;
             }
         }
 
         if (Input.GetButtonDown("ESkill"))
         {
-            Debug.Log("Eが押された");
-            if (_skillInterval < _skillTimer3)
+            if (_slider3.value >= 1)
             {
                 Skill(2);
                 Debug.Log("Eスキルを発動");
-                _skillTimer3 = 0f;
+                _slider3.value = 0;
             }
         }
     }
