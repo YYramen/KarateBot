@@ -9,6 +9,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
+    // プレイヤーの基本動作
     [Tooltip("初期位置")]
     [SerializeField] Vector3 _firstPosition;
     [Tooltip("移動先の位置情報")]
@@ -21,9 +22,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _interval = 3f;
     [Tooltip("インターバルの初期値")]
     float _firstInterval = 0f;
-    
+
+    // スキル関連
     bool[] skills = new bool[4];
+    [SerializeField] float _skillTimer1 = 0f;
+    [SerializeField] float _skillTimer2 = 0f;
+    [SerializeField] float _skillTimer3 = 0f;
+    [SerializeField] float _skillInterval = 3f;
+
+    // 攻撃しているかどうか
     bool _isAttack = false;
+
     NavMeshAgent _agent = default;
     void Start()
     {
@@ -33,6 +42,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        _skillTimer1 += Time.deltaTime;
+        _skillTimer2 += Time.deltaTime;
+        _skillTimer3 += Time.deltaTime;
+
+        // プレイヤーの基本動作(移動、通常攻撃)
         // m_target が移動したら Navmesh Agent を使って移動させる
         if (Vector3.Distance(_changedTargetPosition, _target.position) > Mathf.Epsilon) // _target が移動したら
         {
@@ -55,22 +69,38 @@ public class PlayerController : MonoBehaviour
             this.transform.position = _firstPosition;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        // スキル関係
+        if (Input.GetButtonDown("QSkill"))
         {
-            Skill(0);
-            Debug.Log("Qスキルを発動");
+            Debug.Log("Qが押された");
+            if (_skillInterval < _skillTimer1)
+            {
+                Skill(0);
+                Debug.Log("Qスキルを発動");
+                _skillTimer1 = 0f;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("WSkill"))
         {
-            Skill(1);
-            Debug.Log("Wスキルを発動");
+            Debug.Log("Wが押された");
+            if (_skillInterval < _skillTimer2)
+            {
+                Skill(1);
+                Debug.Log("Wスキルを発動");
+                _skillTimer2 = 0f;
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("ESkill"))
         {
-            Skill(2);
-            Debug.Log("Eスキルを発動");
+            Debug.Log("Eが押された");
+            if (_skillInterval < _skillTimer3)
+            {
+                Skill(2);
+                Debug.Log("Eスキルを発動");
+                _skillTimer3 = 0f;
+            }
         }
     }
 
@@ -93,7 +123,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider other) // プレイヤーの通常攻撃の範囲内に入ったら
     {
         if (other.CompareTag("Enemy"))
         {
@@ -109,7 +139,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other) // プレイヤーの通常攻撃の範囲から出たら
     {
         if (other.CompareTag("Enemy"))
         {
