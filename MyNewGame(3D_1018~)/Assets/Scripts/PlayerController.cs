@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] StatusController _atk;
     float _currentHp;
     float _currentExp;
+    float _currentAtk;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
         //ここで値を保存しておく
         _currentHp = _hp.Health;
         _currentExp = _exp.Level;
+        _currentAtk = _atk.Attack;
     }
 
     void Update()
@@ -165,13 +167,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            _isAttack = true;
+
+            _isAttack = true; // 攻撃フラグを true にする
             Debug.Log($"{other.name}と接触");
-            this.transform.LookAt(other.transform.position);
+            this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
+    
+            // 攻撃を受ける処理
             _firstInterval += Time.deltaTime;
-            if(_firstInterval > _interval)
+            if (_firstInterval > _interval)
             {
-                Debug.Log("通常攻撃");
+                Debug.Log("攻撃を受けた");
+                _currentHp -= other.GetComponent<StatusController>().Attack;
                 _firstInterval = 0f;
             }
         }

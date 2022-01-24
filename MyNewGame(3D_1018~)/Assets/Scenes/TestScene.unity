@@ -442,8 +442,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &118008471
 GameObject:
@@ -2446,8 +2446,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &360824919
 GameObject:
@@ -2883,7 +2883,7 @@ PrefabInstance:
     - target: {fileID: 9059584413257036412, guid: 8d4684edd50b7ec4d83bec547b5c7cdc,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 19
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4684edd50b7ec4d83bec547b5c7cdc, type: 3}
@@ -16527,6 +16527,27 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &1027131593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6169779733294661270, guid: eb97a94ea054b96458126bf92a46be64,
+    type: 3}
+  m_PrefabInstance: {fileID: 6696862081930821096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1027131599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027131593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cce67245335f34c9deebd0feba553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstHealth: 200
+  _firstAttack: 10
+  _firstLevel: 1
 --- !u!1 &1043374928
 GameObject:
   m_ObjectHideFlags: 0
@@ -16782,7 +16803,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1314
+  m_Name: pb_Mesh-21366
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17383,8 +17404,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1352043128
 GameObject:
@@ -17420,8 +17441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1391041843
 GameObject:
@@ -18146,7 +18167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00059509, y: -317}
+  m_AnchoredPosition: {x: -0.00061035156, y: -317}
   m_SizeDelta: {x: -850.55, y: -929.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546819041
@@ -19061,8 +19082,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1878779206
 GameObject:
@@ -20184,6 +20205,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1383910353425090279, guid: eb97a94ea054b96458126bf92a46be64,
+        type: 3}
+      propertyPath: _hp
+      value: 
+      objectReference: {fileID: 1027131599}
+    - target: {fileID: 1383910353425090279, guid: eb97a94ea054b96458126bf92a46be64,
+        type: 3}
+      propertyPath: _atk
+      value: 
+      objectReference: {fileID: 1027131599}
     - target: {fileID: 1383910353425090279, guid: eb97a94ea054b96458126bf92a46be64,
         type: 3}
       propertyPath: _player

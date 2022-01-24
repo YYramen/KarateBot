@@ -9,15 +9,23 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyControl : MonoBehaviour
 {
+    // 移動制御関係
     [SerializeField] Animator _anim = default;
     [SerializeField] GameObject _player = default;
     [SerializeField] float _enemySight = 3f;
-    [SerializeField] float _interval = 5f;
-    NavMeshAgent _agent;
+    [SerializeField] float _interval = 3f;
 
+    // ステータス関係
+    [SerializeField] StatusController _hp;
+    [SerializeField] StatusController _atk;
+    float _currentHp;
+
+    NavMeshAgent _agent;
     float _firstAttack = 0f;
     float _distance = 0f;
     bool _isAttack = false;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +33,11 @@ public class EnemyControl : MonoBehaviour
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player");
+
+        _hp = GetComponent<StatusController>();
+        _atk = GetComponent<StatusController>();
+        _currentHp = _hp.Health;
+
     }
 
     // Update is called once per frame
