@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// スキルを表示するパネルを制御するコンポーネント
+/// </summary>
+
 public class SkillPanel : MonoBehaviour
 {
-    /// <summary>
-    /// スキルを表示するパネルを制御するコンポーネント
-    /// </summary>
     [SerializeField] GameObject _skillPanel;
     [Header ("Skill1")]
     [SerializeField] Text _skillText;
