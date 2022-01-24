@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 /// <summary>
-/// プレイヤーを移動させるためのコンポーネント
+/// プレイヤーの動き、スキル、通常攻撃を制御するコンポーネント
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
@@ -26,15 +26,24 @@ public class PlayerController : MonoBehaviour
 
     // スキル関連
     bool[] skills = new bool[4];
-    [SerializeField] Slider _slider1 = default;
-    [SerializeField] Slider _slider2 = default;
-    [SerializeField] Slider _slider3 = default;
-    [SerializeField] float _skillTimer1 = 0f;
-    [SerializeField] float _skillTimer2 = 0f;
-    [SerializeField] float _skillTimer3 = 0f;
+    [SerializeField] Slider _slider1_QSkill = default;
+    [SerializeField] Slider _slider2_WSkill = default;
+    [SerializeField] Slider _slider3_ESkill = default;
+    float _skillTimer1 = 0f;
+    float _skillTimer2 = 0f;
+    float _skillTimer3 = 0f;
     [SerializeField] float _skillInterval1 = 3f;
     [SerializeField] float _skillInterval2 = 3f;
     [SerializeField] float _skillInterval3 = 3f;
+
+    // HP・レベル関係
+    [SerializeField] Slider _hpSlider = default;
+    [SerializeField] Slider _expSlider = default;
+    [SerializeField] StatusController _hp;
+    [SerializeField] StatusController _exp;
+    [SerializeField] StatusController _atk;
+    float _currentHp;
+    float _currentExp;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -44,6 +53,13 @@ public class PlayerController : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _changedTargetPosition = _target.position;
+        _hp = GetComponent<StatusController>();
+        _exp = GetComponent<StatusController>();
+        _atk = GetComponent<StatusController>();
+
+        //ここで値を保存しておく
+        _currentHp = _hp.Health;
+        _currentExp = _exp.Level;
     }
 
     void Update()
@@ -71,54 +87,62 @@ public class PlayerController : MonoBehaviour
             this.transform.position = _firstPosition;
         }
 
+
         // スキル関係
-        if (_slider1.value != 1)
+        // スキルのクールダウンゲージの処理
+        if (_slider1_QSkill.value != 1)
         {
-            _slider1.value += 1 / _skillInterval1 * Time.deltaTime;
+            _slider1_QSkill.value += 1 / _skillInterval1 * Time.deltaTime;
         }
 
-        if (_slider2.value != 1)
+        if (_slider2_WSkill.value != 1)
         {
-            _slider2.value += 1 / _skillInterval2 * Time.deltaTime;
+            _slider2_WSkill.value += 1 / _skillInterval2 * Time.deltaTime;
         }
 
-        if (_slider3.value != 1)
+        if (_slider3_ESkill.value != 1)
         {
-            _slider3.value += 1 / _skillInterval3 * Time.deltaTime;
+            _slider3_ESkill.value += 1 / _skillInterval3 * Time.deltaTime;
         }
 
+        // クールダウンが終わっていてボタンが押されたらスキル発動
         if (Input.GetButtonDown("QSkill"))
         {
-            if (_slider1.value >= 1)
+            if (_slider1_QSkill.value >= 1)
             {
                 Skill(0);
                 Debug.Log("Qスキルを発動");
-                _slider1.value = 0;
+                _slider1_QSkill.value = 0;
             }
         }
 
         if (Input.GetButtonDown("WSkill"))
         {
-            if (_slider2.value >= 1)
+            if (_slider2_WSkill.value >= 1)
             {
                 Skill(1);
                 Debug.Log("Wスキルを発動");
-                _slider2.value = 0;
+                _slider2_WSkill.value = 0;
             }
         }
 
         if (Input.GetButtonDown("ESkill"))
         {
-            if (_slider3.value >= 1)
+            if (_slider3_ESkill.value >= 1)
             {
                 Skill(2);
                 Debug.Log("Eスキルを発動");
-                _slider3.value = 0;
+                _slider3_ESkill.value = 0;
             }
         }
+
+
+        //HP・レベル関係
+        _hpSlider.value = _currentHp / _hp.Health;
+        _expSlider.value = _currentExp / _exp.Level;
     }
 
-    void Skill(int skill)
+    void Skill(int skill) // アニメーショントリガー
     {
         switch (skill)
         {

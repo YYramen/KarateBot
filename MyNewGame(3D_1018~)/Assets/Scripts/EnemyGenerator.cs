@@ -2,25 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 敵をスポーンさせるためのコンポーネント
+/// </summary>
+
 public class EnemyGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject _enemyPrefab = default;
-    [SerializeField] Transform[] _spawnPoint = default;
-    [SerializeField] float _spawnInterval = 3f;
-    List<GameObject> _enemies = new List<GameObject>();
+    [SerializeField] GameObject _enemyPrefab = default; // スポーンさせる敵のプレハブ
+    [SerializeField] Transform[] _spawnPoint = default; // スポーンさせる場所
+    [SerializeField] float _spawnInterval = 3f; // スポーンさせる間隔
+    List<GameObject> _enemies = new List<GameObject>(); // 沸き数を制限するため敵を格納するリスト
     float _timer = 0f;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerStay(Collider other)
     {

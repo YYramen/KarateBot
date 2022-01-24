@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/// <summary>
+/// 敵の動き、通常攻撃を制御するコンポーネント
+/// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyControl : MonoBehaviour
 {

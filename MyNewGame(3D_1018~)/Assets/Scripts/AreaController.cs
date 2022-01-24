@@ -2,20 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// プレイヤーの通常攻撃の範囲を可視化するためのコンポーネント
+/// </summary>
+
 public class AreaController : MonoBehaviour
 {
     [Tooltip("PlayerMarkerを指定")]
     [SerializeField] GameObject _marker = default;
 
     SpriteRenderer _renderer = default;
-    // Start is called before the first frame update
+
     void Start()
     {
         _renderer = GetComponent<SpriteRenderer>();
         _renderer.color = Color.white;
     }
 
-    // Update is called once per frame
     void Update()
     {
 

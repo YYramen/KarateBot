@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SkillPanel : MonoBehaviour
 {
+    /// <summary>
+    /// スキルを表示するパネルを制御するコンポーネント
+    /// </summary>
     [SerializeField] GameObject _skillPanel;
     [Header ("Skill1")]
     [SerializeField] Text _skillText;

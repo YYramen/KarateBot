@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+/// <summary>
+/// Cinemachine を制御するコンポーネント
+/// </summary>
+
 public class CameraController : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera _camera1 = default;
