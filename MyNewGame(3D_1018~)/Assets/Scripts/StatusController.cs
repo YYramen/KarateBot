@@ -11,7 +11,7 @@ public class StatusController : MonoBehaviour
     // ステータスの初期値、この数字は基本ゲーム中は変わらない
     [SerializeField] float _firstHealth = 200f; 
     [SerializeField] float _firstAttack = 10f;
-    [SerializeField] float _firstLevel = 1f;
+    [SerializeField] float _firstExp = 0f;
 
     // 実際にゲーム中に可変する値
     float _health; 
@@ -31,7 +31,7 @@ public class StatusController : MonoBehaviour
     {
         _health = _firstHealth;
         _attack = _firstAttack;
-        _level = _firstLevel;
+        _level = _firstExp;
     }
 
     // 値を可変させる時に呼び出す関数

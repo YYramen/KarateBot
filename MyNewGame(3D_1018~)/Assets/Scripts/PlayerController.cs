@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _skillInterval1 = 3f;
     [SerializeField] float _skillInterval2 = 3f;
     [SerializeField] float _skillInterval3 = 3f;
+    [SerializeField] Collider _skillECollider = default;
 
     // HP・レベル関係
     [SerializeField] Slider _hpSlider = default;
@@ -42,6 +43,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] StatusController _hp;
     [SerializeField] StatusController _exp;
     [SerializeField] StatusController _atk;
+    [SerializeField] Text _lvText = default;
+    int _level = 0;
     float _currentHp;
     float _currentExp;
     float _currentAtk;
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
             _agent.SetDestination(_changedTargetPosition); // Navmesh Agent に目的地をセットする（Vector3 で座標を設定していることに注意。Transform でも GameObject でもなく、Vector3 で目的地を指定する）
         }
 
-        // m_animator がアサインされていたら Animator Controller にパラメーターを設定する
+        // _animator がアサインされていたら Animator Controller にパラメーターを設定する
         if (_anim)
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
@@ -92,6 +95,7 @@ public class PlayerController : MonoBehaviour
 
         // スキル関係
         // スキルのクールダウンゲージの処理
+
         if (_slider1_QSkill.value != 1)
         {
             _slider1_QSkill.value += 1 / _skillInterval1 * Time.deltaTime;
@@ -142,6 +146,14 @@ public class PlayerController : MonoBehaviour
         //HP・レベル関係
         _hpSlider.value = _currentHp / _hp.Health;
         _expSlider.value = _currentExp / _exp.Level;
+        _lvText.text = _level.ToString();
+
+        if(_expSlider.value > 1)
+        {
+            _expSlider.value = 0;
+            _currentExp = 0;
+            _level++;
+        }
     }
 
     void Skill(int skill) // アニメーショントリガー
