@@ -2508,7 +2508,7 @@ PrefabInstance:
     - target: {fileID: 9059584413257036412, guid: 8d4684edd50b7ec4d83bec547b5c7cdc,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 22
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4684edd50b7ec4d83bec547b5c7cdc, type: 3}
@@ -16509,7 +16509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cce67245335f34c9deebd0feba553c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstHealth: 200
+  _firstHealth: 5
   _firstAttack: 10
   _firstExp: 0
 --- !u!1 &1043374928
@@ -16701,7 +16701,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-21366
+  m_Name: pb_Mesh-1316
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

@@ -14,6 +14,7 @@ public class EnemyControl : MonoBehaviour
     [SerializeField] GameObject _player = default;
     [SerializeField] float _enemySight = 3f;
     [SerializeField] float _interval = 3f;
+    [SerializeField] float _firstInterval = 0;
 
     // ƒXƒe[ƒ^ƒXŠÖŒW
     [SerializeField] StatusController _hp;
@@ -54,20 +55,31 @@ public class EnemyControl : MonoBehaviour
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Attack", _isAttack);
         }
+
+        if (_currentHp < 0)
+        {
+            _isAttack = false;
+            _anim.SetTrigger("Death");
+            Destroy(gameObject, 5);
+        }
     }
 
     private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            //_isAttack = true;
-            this.transform.LookAt(other.transform.position);
-            _firstAttack += Time.deltaTime;
-            if (_firstAttack > _interval)
+            _isAttack = true; // UŒ‚ƒtƒ‰ƒO‚ğ true ‚É‚·‚é
+            Debug.Log($"{other.name}‚ÆÚG");
+            this.transform.LookAt(other.transform.position); // ƒRƒ‰ƒCƒ_[“à‚Ì“G‚ğŒü‚­‚æ‚¤‚É‚·‚é
+
+            // UŒ‚‚ğó‚¯‚éˆ—
+            _firstInterval += Time.deltaTime;
+            if (_firstInterval > _interval)
             {
-                _isAttack = true;
-                Debug.Log("“G‚Ì’ÊíUŒ‚");
-                _firstAttack = 0f;
+                Debug.Log("UŒ‚‚ğó‚¯‚½");
+                _currentHp -= other.GetComponent<StatusController>().Attack;
+                Debug.Log(_currentHp);
+                _firstInterval = 0f;
             }
         }
     }
