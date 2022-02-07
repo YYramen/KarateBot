@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 /// <summary>
@@ -16,6 +17,7 @@ public class EnemyControl : MonoBehaviour
     int _currentPoint;
     [Tooltip("行動パターンを分けるための変数")]
     int _mode;
+
     [Tooltip("プレイヤーの位置を入れる変数")]
     [SerializeField] Transform _player = default;
     [Tooltip("敵の位置を入れる変数")]
@@ -30,6 +32,9 @@ public class EnemyControl : MonoBehaviour
     [SerializeField] StatusController _hp;
     [SerializeField] StatusController _atk;
     float _currentHp;
+
+    //ダメージ表示
+    [SerializeField] Text _damageText = default;
 
     NavMeshAgent _agent;
     float _firstAttack = 0f;
@@ -47,6 +52,7 @@ public class EnemyControl : MonoBehaviour
 
         _hp = GetComponent<StatusController>();
         _atk = GetComponent<StatusController>();
+        //_playerAtk = GetComponent<PlayerController>();
         _currentHp = _hp.Health;
 
     }
@@ -100,12 +106,27 @@ public class EnemyControl : MonoBehaviour
             _anim.SetBool("Attack", _isAttack);
         }
 
-        if (_currentHp < 0)
+        if (_currentHp <= 0)
         {
-            _isAttack = false;
+            _agent.destination = this.transform.position;
+            _currentHp = 0;
             _anim.SetTrigger("Death");
             Destroy(gameObject, 5);
         }
+    }
+
+    //public void ViewDamage(int _damage)
+    //{
+    //    _damage = _playerAtk.
+    //}
+
+    public void TakeDamage()
+    {
+        //シングルトンクラスのPlayerControllerの攻撃力を参照している
+        float damage = PlayerController.Instance.CurrentAttack;
+        _currentHp -= damage;
+        _damageText.text = damage.ToString();
+        Instantiate(_damageText, transform.position, transform.rotation);
     }
 
     private void OnTriggerStay(Collider other)
@@ -120,8 +141,8 @@ public class EnemyControl : MonoBehaviour
             _firstInterval += Time.deltaTime;
             if (_firstInterval > _interval)
             {
-                Debug.Log("攻撃を受けた");
-                _currentHp -= other.GetComponent<StatusController>().Attack;
+                //_currentHp -= other.GetComponent<StatusController>().Attack;]
+                TakeDamage();
                 Debug.Log(_currentHp);
                 _firstInterval = 0f;
             }

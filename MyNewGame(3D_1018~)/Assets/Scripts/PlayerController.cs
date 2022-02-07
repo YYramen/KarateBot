@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// プレイヤーの動き、スキル、通常攻撃を制御するコンポーネント
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     // プレイヤーの基本動作
     [Tooltip("初期位置")]
@@ -44,10 +44,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] StatusController _exp;
     [SerializeField] StatusController _atk;
     [SerializeField] Text _lvText = default;
+    [SerializeField] Text _hpText = default;
     int _level = 0;
     float _currentHp;
     float _currentExp;
     float _currentAtk;
+    public float CurrentAttack => _currentAtk;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -147,8 +149,9 @@ public class PlayerController : MonoBehaviour
         _hpSlider.value = _currentHp / _hp.Health;
         _expSlider.value = _currentExp / _exp.Level;
         _lvText.text = _level.ToString();
+        _hpText.text = _currentHp.ToString();
 
-        if(_expSlider.value > 1)
+        if (_expSlider.value > 1)
         {
             _expSlider.value = 0;
             _currentExp = 0;
