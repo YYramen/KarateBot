@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1977603197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1977603198}
+  - component: {fileID: 1977603199}
+  m_Layer: 0
+  m_Name: AttackArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1977603198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977603197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6169779733294293878}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1977603199
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977603197}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 0
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6169779733294658448
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +705,7 @@ GameObject:
   - component: {fileID: 3574251221009218520}
   - component: {fileID: 8275003449735203223}
   - component: {fileID: 1383910353425090279}
+  - component: {fileID: 1027131599}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -681,6 +728,7 @@ Transform:
   - {fileID: 6169779733294294134}
   - {fileID: 6169779733294294132}
   - {fileID: 6169779733294294926}
+  - {fileID: 1977603198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -714,7 +762,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1
+  m_Radius: 0.45
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -748,7 +796,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -768,10 +816,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48d1ff8828e011d47a3a91515da6a223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _anim: {fileID: 6169779733304167662}
+  _wayPoints:
+  - {x: 21, y: 0.0000001192093, z: -0.6868551}
+  - {x: 21, y: 0.0000001192093, z: 5}
+  - {x: 21, y: 0.0000001192093, z: -5}
   _player: {fileID: 0}
-  _enemyZone: 3
+  _enemy: {fileID: 6169779733294293878}
+  _anim: {fileID: 6169779733304167662}
+  _enemySight: 3
   _interval: 5
+  _firstInterval: 0
+  _hp: {fileID: 1027131599}
+  _atk: {fileID: 1027131599}
+--- !u!114 &1027131599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6169779733294661270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cce67245335f34c9deebd0feba553c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstHealth: 5
+  _firstAttack: 10
+  _firstExp: 0
 --- !u!1 &6169779733294661272
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,18 @@ using UnityEngine.AI;
 public class EnemyControl : MonoBehaviour
 {
     // 移動制御関係
+    [Tooltip("徘徊するポイントの座標を入れておく Vector3 の配列")]
+    [SerializeField] Vector3[] _wayPoints = new Vector3[3];
+    [Tooltip("今目指すポイントを入れておく変数")]
+    int _currentPoint;
+    [Tooltip("行動パターンを分けるための変数")]
+    int _mode;
+    [Tooltip("プレイヤーの位置を入れる変数")]
+    [SerializeField] Transform _player = default;
+    [Tooltip("敵の位置を入れる変数")]
+    [SerializeField] Transform _enemy = default;
     [SerializeField] Animator _anim = default;
-    [SerializeField] GameObject _player = default;
+    //[SerializeField] GameObject _player = default;
     [SerializeField] float _enemySight = 3f;
     [SerializeField] float _interval = 3f;
     [SerializeField] float _firstInterval = 0;
@@ -33,7 +43,7 @@ public class EnemyControl : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-        _player = GameObject.FindGameObjectWithTag("Player");
+        //_player = GameObject.FindGameObjectWithTag("Player");
 
         _hp = GetComponent<StatusController>();
         _atk = GetComponent<StatusController>();
@@ -44,10 +54,44 @@ public class EnemyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        if (_distance < _enemySight)
+        //_distance = Vector3.Distance(this.transform.position, _player.transform.position);
+        //if (_distance < _enemySight)
+        //{
+        //    _agent.destination = _player.transform.position;
+        //}
+
+        Vector3 pos = _wayPoints[_currentPoint];
+        float dis = Vector3.Distance(_enemy.position, _player.position);
+
+        if(dis > 5)
         {
-            _agent.destination = _player.transform.position;
+            _mode = 0;
+        }
+
+        if(dis < 5)
+        {
+            _mode = 1;
+        }
+
+        switch(_mode)
+        {
+            case 0:
+                
+                if(Vector3.Distance(transform.position, pos) > 1f)
+                {
+                    _currentPoint += 1;
+                    if(_currentPoint > _wayPoints.Length - 1)
+                    {
+                        _currentPoint = 0;
+                    }
+                }
+                GetComponent<NavMeshAgent>().SetDestination(pos);
+                break;
+
+            case 1:
+
+                _agent.destination = _player.transform.position;
+                break;
         }
 
         if(_anim)
