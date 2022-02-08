@@ -18,8 +18,6 @@ public class EnemyControl : MonoBehaviour
     [Tooltip("行動パターンを分けるための変数")]
     int _mode;
 
-    [Tooltip("プレイヤーの位置を入れる変数")]
-    [SerializeField] Transform _player = default;
     [Tooltip("敵の位置を入れる変数")]
     [SerializeField] Transform _enemy = default;
     [SerializeField] Animator _anim = default;
@@ -31,11 +29,13 @@ public class EnemyControl : MonoBehaviour
     // ステータス関係
     [SerializeField] StatusController _hp;
     [SerializeField] StatusController _atk;
+    [SerializeField] Slider _hpSlider = default;
     float _currentHp;
 
     //ダメージ表示
     [SerializeField] GameObject _damageText = default;
     [SerializeField] GameObject _damageCanvas = default;
+    [SerializeField] Transform _uiPos = default;
  
     NavMeshAgent _agent;
     float _firstAttack = 0f;
@@ -68,7 +68,7 @@ public class EnemyControl : MonoBehaviour
         //}
 
         Vector3 pos = _wayPoints[_currentPoint];
-        float dis = Vector3.Distance(_enemy.position, _player.position);
+        float dis = Vector3.Distance(_enemy.position, PlayerController.Instance.transform.position);
 
         if(dis > 5)
         {
@@ -97,7 +97,7 @@ public class EnemyControl : MonoBehaviour
 
             case 1:
 
-                _agent.destination = _player.transform.position;
+                _agent.destination = PlayerController.Instance.transform.position;
                 break;
         }
 
@@ -115,6 +115,9 @@ public class EnemyControl : MonoBehaviour
             _anim.SetTrigger("Death");
             Destroy(gameObject, 5);
         }
+
+        //HP関係
+        //_hpSlider.value = _currentHp / _hp.Health;
     }
 
     //public void ViewDamage(int _damage)
@@ -134,7 +137,7 @@ public class EnemyControl : MonoBehaviour
 
     public void ShowDamage()
     {
-        var go = Instantiate<GameObject>(_damageText, this.transform.position, Quaternion.identity, _damageCanvas.transform);
+        var go = Instantiate<GameObject>(_damageText,_uiPos.position,Quaternion.identity,_damageCanvas.transform);
         go.GetComponent<Text>().text = PlayerController.Instance.CurrentAttack.ToString();
     }
 
@@ -142,6 +145,7 @@ public class EnemyControl : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            _agent.velocity = Vector3.zero; // 範囲内の時は動かないようにする
             _isAttack = true; // 攻撃フラグを true にする
             Debug.Log($"{other.name}と接触");
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする

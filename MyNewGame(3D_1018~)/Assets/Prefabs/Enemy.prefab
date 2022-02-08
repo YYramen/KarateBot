@@ -1,5 +1,105 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &190900006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 190900007}
+  - component: {fileID: 190900011}
+  - component: {fileID: 190900010}
+  - component: {fileID: 190900009}
+  m_Layer: 0
+  m_Name: DamageUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &190900007
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190900006}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6169779733294293878}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.016300201, y: 3}
+  m_SizeDelta: {x: 2.1923, y: 2.6074}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &190900011
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190900006}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &190900010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190900006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &190900009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190900006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1977603197
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +130,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6169779733294293878}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1977603199
 CapsuleCollider:
@@ -728,6 +828,7 @@ Transform:
   - {fileID: 6169779733294294134}
   - {fileID: 6169779733294294132}
   - {fileID: 6169779733294294926}
+  - {fileID: 190900007}
   - {fileID: 1977603198}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -817,17 +918,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _wayPoints:
-  - {x: 21, y: 0.0000001192093, z: -0.6868551}
-  - {x: 21, y: 0.0000001192093, z: 5}
-  - {x: 21, y: 0.0000001192093, z: -5}
+  - {x: 26.32, y: 0.0000001192093, z: -5.4}
+  - {x: 15.7, y: 0.0000001192093, z: 5}
+  - {x: 21, y: 0.0000001192093, z: 11.23}
   _player: {fileID: 0}
   _enemy: {fileID: 6169779733294293878}
   _anim: {fileID: 6169779733304167662}
   _enemySight: 3
-  _interval: 5
-  _firstInterval: 0
+  _interval: 3
+  _timer: 3
   _hp: {fileID: 1027131599}
   _atk: {fileID: 1027131599}
+  _hpSlider: {fileID: 0}
+  _damageText: {fileID: 4229845849942871983, guid: 93e2780cb9f9fcf4dbe53133ffb814f1,
+    type: 3}
+  _damageCanvas: {fileID: 190900006}
+  _uiPos: {fileID: 190900007}
 --- !u!114 &1027131599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,7 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cce67245335f34c9deebd0feba553c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstHealth: 5
+  _firstHealth: 50
   _firstAttack: 10
   _firstExp: 0
 --- !u!1 &6169779733294661272

@@ -84,7 +84,6 @@ public class PlayerController : Singleton<PlayerController>
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Jump", _agent.isOnOffMeshLink);
-            _anim.SetBool("Attack", _isAttack);
         }
 
         // Escape キーを押したら初期位置に戻る(多分これそのうち消す)
@@ -182,8 +181,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         if (other.CompareTag("Enemy"))
         {
-
-            _isAttack = true; // 攻撃フラグを true にする
+            _anim.SetTrigger("Attack"); // 攻撃フラグを true にする
             Debug.Log($"{other.name}と接触");
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
     
@@ -204,7 +202,6 @@ public class PlayerController : Singleton<PlayerController>
         {
             Debug.Log($"{other.name}から離れた");
             _firstInterval = 0f;
-            _isAttack = false;
         }
     }
 }
