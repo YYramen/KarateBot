@@ -49,7 +49,11 @@ public class PlayerController : Singleton<PlayerController>
     float _currentHp;
     float _currentExp;
     float _currentAtk;
+    float _skillWatk = 15f;
+    float _skillEatk = 30f;
     public float CurrentAttack => _currentAtk;
+    public float SkillWatk => _skillWatk;
+    public float SkillEatk => _skillEatk;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -203,5 +207,10 @@ public class PlayerController : Singleton<PlayerController>
             Debug.Log($"{other.name}から離れた");
             _firstInterval = 0f;
         }
+    }
+
+    public void AddAttack(float addAtk)
+    {
+        _currentAtk += addAtk;
     }
 }

@@ -172,4 +172,16 @@ public class EnemyControl : MonoBehaviour
             _isAttack = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SkillW"))
+        {
+            _currentHp -= PlayerController.Instance.SkillWatk; 
+        }
+        else if (other.CompareTag("SkillE"))
+        {
+            _currentHp -= PlayerController.Instance.SkillEatk;
+        }
+    }
 }

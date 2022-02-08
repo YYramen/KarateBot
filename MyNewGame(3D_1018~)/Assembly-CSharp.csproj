@@ -68,7 +68,7 @@
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenTrack.cs" />
     <Compile Include="Assets\ExplosiveLLC\Warrior FREE\Code\WarriorMovementController.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\Scripts\SimpleStateMachine.cs" />
-    <Compile Include="Assets\Scripts\ColliderOnOff.cs" />
+    <Compile Include="Assets\Scripts\PlayerAnimationEvent.cs" />
     <Compile Include="Assets\Scripts\SkillPanel.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderMixerBehaviour.cs" />
     <Compile Include="Assets\Scripts\EnemyControl.cs" />
