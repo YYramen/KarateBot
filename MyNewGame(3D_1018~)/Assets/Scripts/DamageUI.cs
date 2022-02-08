@@ -5,34 +5,20 @@ using UnityEngine.UI;
 
 public class DamageUI : MonoBehaviour
 {
-    [SerializeField] float _deleteTime = 1.0f;
-    [SerializeField] float _moveRange = 1.0f;
-    [SerializeField] float _endAlpha = 0;
+	[SerializeField] Text _damageText;
+	float _fadeOutSpeed = 1f; //　フェードアウトするスピード
+	[SerializeField] float _moveSpeed = 0.4f; //　移動値
 
-    float _timeCount;
-    Text _nowText;
+	private void LateUpdate()
+	{
+		transform.rotation = Camera.main.transform.rotation;
+		transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        _timeCount = 0.0f;
-        //Destroy(this.gameObject, _deleteTime);
-        _nowText = this.gameObject.GetComponent<Text>();
-    }
+		_damageText.color = Color.Lerp(_damageText.color, new Color(1f, 0f, 0f, 0f), _fadeOutSpeed * Time.deltaTime);
 
-    // Update is called once per frame
-    void Update()
-    {
-        this.transform.LookAt(Camera.main.transform);
-        _timeCount += Time.deltaTime;
-        this.gameObject.transform.localPosition += new Vector3(0, _moveRange / _deleteTime * Time.deltaTime, 0);
-        this.gameObject.transform.Rotate(0, -180.0f, 0);
-        float _alpha = 1.0f - (1.0f - _endAlpha) * (_timeCount / _deleteTime);
-
-        if (_alpha <= 0.0f)
-        {
-            _alpha = 0.0f;
-        }
-        _nowText.color = new Color(_nowText.color.r, _nowText.color.g, _nowText.color.b, _alpha);
-    }
+		if (_damageText.color.a <= 0.1f)
+		{
+			Destroy(gameObject);
+		}
+	}
 }

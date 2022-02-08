@@ -191,7 +191,7 @@ public class PlayerController : Singleton<PlayerController>
             _firstInterval += Time.deltaTime;
             if (_firstInterval > _interval)
             {
-                Debug.Log("攻撃を受けた");
+                Debug.Log("プレイヤーが攻撃を受けた");
                 _currentHp -= other.GetComponent<StatusController>().Attack;
                 _firstInterval = 0f;
             }

@@ -26,7 +26,7 @@ public class EnemyControl : MonoBehaviour
     //[SerializeField] GameObject _player = default;
     [SerializeField] float _enemySight = 3f;
     [SerializeField] float _interval = 3f;
-    [SerializeField] float _firstInterval = 0;
+    [SerializeField] float _timer = 3f;
 
     // ステータス関係
     [SerializeField] StatusController _hp;
@@ -34,8 +34,9 @@ public class EnemyControl : MonoBehaviour
     float _currentHp;
 
     //ダメージ表示
-    [SerializeField] Text _damageText = default;
-
+    [SerializeField] GameObject _damageText = default;
+    [SerializeField] GameObject _damageCanvas = default;
+ 
     NavMeshAgent _agent;
     float _firstAttack = 0f;
     float _distance = 0f;
@@ -110,6 +111,7 @@ public class EnemyControl : MonoBehaviour
         {
             _agent.destination = this.transform.position;
             _currentHp = 0;
+            Debug.Log("敵が倒された");
             _anim.SetTrigger("Death");
             Destroy(gameObject, 5);
         }
@@ -125,8 +127,15 @@ public class EnemyControl : MonoBehaviour
         //シングルトンクラスのPlayerControllerの攻撃力を参照している
         float damage = PlayerController.Instance.CurrentAttack;
         _currentHp -= damage;
-        _damageText.text = damage.ToString();
-        Instantiate(_damageText, transform.position, transform.rotation);
+        Debug.Log("プレイヤーから" + damage + "ダメージを受けた");
+        //_damageText.text = damage.ToString();
+        //Instantiate(_damageText, transform.position, transform.rotation);
+    }
+
+    public void ShowDamage()
+    {
+        var go = Instantiate<GameObject>(_damageText, this.transform.position, Quaternion.identity, _damageCanvas.transform);
+        go.GetComponent<Text>().text = PlayerController.Instance.CurrentAttack.ToString();
     }
 
     private void OnTriggerStay(Collider other)
@@ -138,13 +147,14 @@ public class EnemyControl : MonoBehaviour
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
 
             // 攻撃を受ける処理
-            _firstInterval += Time.deltaTime;
-            if (_firstInterval > _interval)
+            _timer += Time.deltaTime;
+            if (_timer > _interval)
             {
                 //_currentHp -= other.GetComponent<StatusController>().Attack;]
                 TakeDamage();
+                ShowDamage();
                 Debug.Log(_currentHp);
-                _firstInterval = 0f;
+                _timer = 0f;
             }
         }
     }

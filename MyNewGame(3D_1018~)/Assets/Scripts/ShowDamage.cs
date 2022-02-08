@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAtIK : MonoBehaviour
+public class ShowDamage : MonoBehaviour
 {
-    Animator _anim = default;
     // Start is called before the first frame update
     void Start()
     {
