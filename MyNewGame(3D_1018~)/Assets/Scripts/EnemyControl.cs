@@ -37,9 +37,12 @@ public class EnemyControl : MonoBehaviour
     [SerializeField] GameObject _damageCanvas = default;
     [SerializeField] Transform _uiPos = default;
 
-    //倒されたときに呼び出すプレハブ
+    //倒されたときに呼び出す
     [SerializeField] GameObject _deathPrefab = default;
- 
+    [SerializeField] Slider _missionSlider = default;
+    float _plsMission = 0.2f;
+
+    float _destroyDistance = 100;
     NavMeshAgent _agent;
     float _firstAttack = 0f;
     float _distance = 0f;
@@ -73,24 +76,34 @@ public class EnemyControl : MonoBehaviour
         Vector3 pos = _wayPoints[_currentPoint];
         float dis = Vector3.Distance(_enemy.position, PlayerController.Instance.transform.position);
 
-        if(dis > 5)
+        //Player との距離が 100 以上になったら消し、100未満なら出現させる
+        if (dis > _destroyDistance)
+        {
+            this.gameObject.SetActive(false);
+        }
+        else
+        {
+            this.gameObject.SetActive(true);
+        }
+
+        if (dis > 5)
         {
             _mode = 0;
         }
 
-        if(dis < 5)
+        if (dis < 5)
         {
             _mode = 1;
         }
 
-        switch(_mode)
+        switch (_mode)
         {
             case 0:
-                
-                if(Vector3.Distance(transform.position, pos) > 1f)
+
+                if (Vector3.Distance(transform.position, pos) > 1f)
                 {
                     _currentPoint += 1;
-                    if(_currentPoint > _wayPoints.Length - 1)
+                    if (_currentPoint > _wayPoints.Length - 1)
                     {
                         _currentPoint = 0;
                     }
@@ -104,7 +117,7 @@ public class EnemyControl : MonoBehaviour
                 break;
         }
 
-        if(_anim)
+        if (_anim)
         {
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Attack", _isAttack);
@@ -115,6 +128,7 @@ public class EnemyControl : MonoBehaviour
             _agent.destination = this.transform.position;
             _currentHp = 0;
             PlayerController.Instance.AddExp(_giveExp);
+            _missionSlider.value += _plsMission;
             Debug.Log("敵が倒された");
             Instantiate(_deathPrefab, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
@@ -141,13 +155,13 @@ public class EnemyControl : MonoBehaviour
 
     public void ShowDamage()
     {
-        var go = Instantiate<GameObject>(_damageText,_uiPos.position,Quaternion.identity,_damageCanvas.transform);
+        var go = Instantiate<GameObject>(_damageText, _uiPos.position, Quaternion.identity, _damageCanvas.transform);
         go.GetComponent<Text>().text = PlayerController.Instance.CurrentAttack.ToString();
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             _agent.velocity = Vector3.zero; // 範囲内の時は動かないようにする
             _isAttack = true; // 攻撃フラグを true にする
@@ -181,7 +195,7 @@ public class EnemyControl : MonoBehaviour
     {
         if (other.CompareTag("SkillW"))
         {
-            _currentHp -= PlayerController.Instance.SkillWatk; 
+            _currentHp -= PlayerController.Instance.SkillWatk;
         }
         else if (other.CompareTag("SkillE"))
         {

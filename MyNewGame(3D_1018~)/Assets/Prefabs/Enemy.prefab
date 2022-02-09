@@ -921,7 +921,6 @@ MonoBehaviour:
   - {x: 26.32, y: 0.0000001192093, z: -5.4}
   - {x: 15.7, y: 0.0000001192093, z: 5}
   - {x: 21, y: 0.0000001192093, z: 11.23}
-  _player: {fileID: 0}
   _enemy: {fileID: 6169779733294293878}
   _anim: {fileID: 6169779733304167662}
   _enemySight: 3
@@ -930,10 +929,14 @@ MonoBehaviour:
   _hp: {fileID: 1027131599}
   _atk: {fileID: 1027131599}
   _hpSlider: {fileID: 0}
+  _giveExp: 5
   _damageText: {fileID: 4229845849942871983, guid: 93e2780cb9f9fcf4dbe53133ffb814f1,
     type: 3}
   _damageCanvas: {fileID: 190900006}
   _uiPos: {fileID: 190900007}
+  _deathPrefab: {fileID: 883935010130624525, guid: 355353fa79bae4c428cc4f7eb29c3d76,
+    type: 3}
+  _missionSlider: {fileID: 0}
 --- !u!114 &1027131599
 MonoBehaviour:
   m_ObjectHideFlags: 0
