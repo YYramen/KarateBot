@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     <UnityVersion>2021.2.8f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\Scripts\MarkerController.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderClip.cs" />
     <Compile Include="Assets\DefaultPlayables\Video\VideoScriptPlayableAsset.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\LevelReset.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
+    <Compile Include="Assets\Scripts\LevelUpUI.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperStateMachine.cs" />
     <Compile Include="Assets\ExplosiveLLC\Warrior FREE\Code\WarriorInputSystemController.cs" />
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenTrack.cs" />
@@ -136,10 +140,9 @@
     <Compile Include="Assets\DefaultPlayables\Video\VideoPlayableBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\Video\VideoSchedulerPlayableBehaviour.cs" />
+    <Compile Include="Assets\Scripts\EnemyDeath.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperCharacterController.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
-    <Compile Include="Assets\Scripts\EnemyDeath.cs" />
-    <Compile Include="Assets\Scripts\LevelUpUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
