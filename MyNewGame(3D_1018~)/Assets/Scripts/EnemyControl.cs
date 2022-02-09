@@ -17,7 +17,6 @@ public class EnemyControl : MonoBehaviour
     int _currentPoint;
     [Tooltip("行動パターンを分けるための変数")]
     int _mode;
-
     [Tooltip("敵の位置を入れる変数")]
     [SerializeField] Transform _enemy = default;
     [SerializeField] Animator _anim = default;
@@ -30,12 +29,16 @@ public class EnemyControl : MonoBehaviour
     [SerializeField] StatusController _hp;
     [SerializeField] StatusController _atk;
     [SerializeField] Slider _hpSlider = default;
+    [SerializeField] float _giveExp = 5f;
     float _currentHp;
 
     //ダメージ表示
     [SerializeField] GameObject _damageText = default;
     [SerializeField] GameObject _damageCanvas = default;
     [SerializeField] Transform _uiPos = default;
+
+    //倒されたときに呼び出すプレハブ
+    [SerializeField] GameObject _deathPrefab = default;
  
     NavMeshAgent _agent;
     float _firstAttack = 0f;
@@ -111,9 +114,10 @@ public class EnemyControl : MonoBehaviour
         {
             _agent.destination = this.transform.position;
             _currentHp = 0;
+            PlayerController.Instance.AddExp(_giveExp);
             Debug.Log("敵が倒された");
-            _anim.SetTrigger("Death");
-            Destroy(gameObject, 5);
+            Instantiate(_deathPrefab, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
 
         //HP関係

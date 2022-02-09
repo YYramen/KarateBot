@@ -52,6 +52,7 @@ public class PlayerController : Singleton<PlayerController>
     float _skillWatk = 15f;
     float _skillEatk = 30f;
     public float CurrentAttack => _currentAtk;
+    public float CurrentExp => _currentExp;
     public float SkillWatk => _skillWatk;
     public float SkillEatk => _skillEatk;
 
@@ -154,12 +155,18 @@ public class PlayerController : Singleton<PlayerController>
         _lvText.text = _level.ToString();
         _hpText.text = _currentHp.ToString();
 
-        if (_expSlider.value > 1)
+        if (_expSlider.value == 1)
         {
             _expSlider.value = 0;
             _currentExp = 0;
             _level++;
         }
+    }
+
+    public void AddExp(float exp)
+    {
+        _currentExp += exp;
+        Debug.Log($"経験値が{exp}増えた");
     }
 
     void Skill(int skill) // アニメーショントリガー
