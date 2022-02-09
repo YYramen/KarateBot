@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// ダメージを表示するコンポーネント
 /// </summary>
-public class DamageUI : MonoBehaviour
+public class LevelUpUI : MonoBehaviour
 {
 	[SerializeField] Text _damageText;
 	float _fadeOutSpeed = 1f; //　フェードアウトするスピード
@@ -17,7 +17,7 @@ public class DamageUI : MonoBehaviour
 		transform.rotation = Camera.main.transform.rotation;
 		transform.position += Vector3.up * _moveSpeed * Time.deltaTime;
 
-		_damageText.color = Color.Lerp(_damageText.color, new Color(1f, 0f, 0f, 0f), _fadeOutSpeed * Time.deltaTime);
+		_damageText.color = Color.Lerp(_damageText.color, new Color(1f, 1f, 1f, 0f), _fadeOutSpeed * Time.deltaTime);
 
 		if (_damageText.color.a <= 0.1f)
 		{

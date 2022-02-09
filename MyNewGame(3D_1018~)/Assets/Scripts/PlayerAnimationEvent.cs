@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+/// <summary>
+/// AnimationEvent で呼び出すスキルの効果のコンポーネント
+/// </summary>
 public class PlayerAnimationEvent : MonoBehaviour
 {
     [SerializeField] Collider _skillECollider = default;

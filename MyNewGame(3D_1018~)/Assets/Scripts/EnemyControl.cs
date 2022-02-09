@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.AI;
 
 /// <summary>
-/// 敵の動き、通常攻撃を制御するコンポーネント
+/// 敵を制御するコンポーネント
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyControl : MonoBehaviour
@@ -134,7 +134,7 @@ public class EnemyControl : MonoBehaviour
         //シングルトンクラスのPlayerControllerの攻撃力を参照している
         float damage = PlayerController.Instance.CurrentAttack;
         _currentHp -= damage;
-        Debug.Log("プレイヤーから" + damage + "ダメージを受けた");
+        Debug.Log("敵がプレイヤーから" + damage + "ダメージを受けた");
         //_damageText.text = damage.ToString();
         //Instantiate(_damageText, transform.position, transform.rotation);
     }
@@ -151,7 +151,7 @@ public class EnemyControl : MonoBehaviour
         {
             _agent.velocity = Vector3.zero; // 範囲内の時は動かないようにする
             _isAttack = true; // 攻撃フラグを true にする
-            Debug.Log($"{other.name}と接触");
+            Debug.Log($"敵が{other.name}と接触");
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
 
             // 攻撃を受ける処理
@@ -161,7 +161,7 @@ public class EnemyControl : MonoBehaviour
                 //_currentHp -= other.GetComponent<StatusController>().Attack;]
                 TakeDamage();
                 ShowDamage();
-                Debug.Log(_currentHp);
+                Debug.Log($"敵の残りHPは{_currentHp}");
                 _timer = 0f;
             }
         }

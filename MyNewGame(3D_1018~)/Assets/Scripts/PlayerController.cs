@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 
 /// <summary>
-/// プレイヤーの動き、スキル、通常攻撃を制御するコンポーネント
+/// プレイヤーを制御するコンポーネント
 /// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : Singleton<PlayerController>
@@ -55,6 +55,13 @@ public class PlayerController : Singleton<PlayerController>
     public float CurrentExp => _currentExp;
     public float SkillWatk => _skillWatk;
     public float SkillEatk => _skillEatk;
+
+    //レベルアップするとき
+    [SerializeField] GameObject _levelUpText = default;
+    [SerializeField] Transform _uiPos = default;
+    [SerializeField] GameObject _canvas = default;
+    float _upHP = 50f;
+    float _upAtk = 5f;
 
     // 攻撃しているかどうか
     bool _isAttack = false;
@@ -157,6 +164,7 @@ public class PlayerController : Singleton<PlayerController>
 
         if (_expSlider.value == 1)
         {
+            LevelUp();
             _expSlider.value = 0;
             _currentExp = 0;
             _level++;
@@ -167,6 +175,15 @@ public class PlayerController : Singleton<PlayerController>
     {
         _currentExp += exp;
         Debug.Log($"経験値が{exp}増えた");
+    }
+
+    void LevelUp() //レベルアップした時に呼ばれる関数
+    {
+        Instantiate(_levelUpText, _uiPos.position, Quaternion.identity, _canvas.transform);
+        _currentHp += _upHP;
+        Debug.Log($"HPが{_upHP}回復した,現在の残りHPは{_currentHp}");
+        _currentAtk += _upAtk;
+        Debug.Log($"攻撃力が{_upAtk}増加した");
     }
 
     void Skill(int skill) // アニメーショントリガー
@@ -193,14 +210,14 @@ public class PlayerController : Singleton<PlayerController>
         if (other.CompareTag("Enemy"))
         {
             _anim.SetTrigger("Attack"); // 攻撃フラグを true にする
-            Debug.Log($"{other.name}と接触");
+            Debug.Log($"プレイヤーが{other.name}と接触");
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
     
             // 攻撃を受ける処理
             _firstInterval += Time.deltaTime;
             if (_firstInterval > _interval)
             {
-                Debug.Log("プレイヤーが攻撃を受けた");
+                Debug.Log($"プレイヤーが敵から{other.GetComponent<StatusController>().Attack}ダメージ受けた");
                 _currentHp -= other.GetComponent<StatusController>().Attack;
                 _firstInterval = 0f;
             }

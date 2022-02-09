@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4229845849942871982}
   - component: {fileID: 4229845849942871980}
   - component: {fileID: 4229845849942871981}
-  - component: {fileID: 5839106088885042049}
+  - component: {fileID: 5051465977306854888}
+  - component: {fileID: -1575923232181726585}
   m_Layer: 0
-  m_Name: DamageText
+  m_Name: LevelUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -77,11 +78,11 @@ MonoBehaviour:
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 500
---- !u!114 &5839106088885042049
+  m_Text: "\u30EC\u30D9\u30EB\u30A2\u30C3\u30D7\uFF01"
+--- !u!114 &5051465977306854888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,7 +91,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4229845849942871983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d96cb520b69174a93a8d2de24255ca, type: 3}
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1.5, y: -1.5}
+  m_UseGraphicAlpha: 1
+--- !u!114 &-1575923232181726585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229845849942871983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165ccc1fdf2602846afa39e3b442ce0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damageText: {fileID: 4229845849942871981}

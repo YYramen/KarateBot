@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 敵が倒されたときに呼び出されるプレハブを消すためのコンポーネント
+/// 敵が倒されたときに呼び出されるコンポーネント（時間が経ったら Destroy するだけ）
 /// </summary>
 public class EnemyDeath : MonoBehaviour
 {
