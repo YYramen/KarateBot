@@ -66,6 +66,9 @@ public class PlayerController : Singleton<PlayerController>
     // 攻撃しているかどうか
     bool _isAttack = false;
 
+    //倒されるとき
+    [SerializeField] GameObject _death = default;
+
     NavMeshAgent _agent = default;
     void Start()
     {
@@ -168,6 +171,14 @@ public class PlayerController : Singleton<PlayerController>
             _expSlider.value = 0;
             _currentExp = 0;
             _level++;
+        }
+
+        if(_currentHp < 0)
+        {
+            _currentHp = 0;
+            Debug.Log("プレイヤーが倒された");
+            Instantiate(_death, this.transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 

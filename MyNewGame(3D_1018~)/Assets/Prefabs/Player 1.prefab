@@ -402,6 +402,7 @@ MonoBehaviour:
     type: 3}
   _uiPos: {fileID: 1194969408}
   _canvas: {fileID: 1194969407}
+  _death: {fileID: 3398818097234245046, guid: 386d0b89949842a4bab1fe5a4114ebad, type: 3}
 --- !u!65 &8528860659724332978
 BoxCollider:
   m_ObjectHideFlags: 0

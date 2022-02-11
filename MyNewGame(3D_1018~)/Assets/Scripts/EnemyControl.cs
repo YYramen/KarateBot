@@ -39,7 +39,7 @@ public class EnemyControl : MonoBehaviour
 
     //“|‚³‚ê‚½‚Æ‚«‚ÉŒÄ‚Ño‚·
     [SerializeField] GameObject _deathPrefab = default;
-    [SerializeField] Slider _missionSlider = default;
+    Slider _missionSlider = default;
     float _plsMission = 0.2f;
 
     float _destroyDistance = 100;
@@ -61,6 +61,8 @@ public class EnemyControl : MonoBehaviour
         _atk = GetComponent<StatusController>();
         //_playerAtk = GetComponent<PlayerController>();
         _currentHp = _hp.Health;
+
+        _missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
 
     }
 
