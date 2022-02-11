@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CrossHair : MonoBehaviour
+public class CursorControl : MonoBehaviour,IPointerEnterHandler //IPointerExitHandler
 {
     // Start is called before the first frame update
     [SerializeField] Texture2D _cursor = default;
@@ -14,17 +15,25 @@ public class CrossHair : MonoBehaviour
     void Start()
     {
         // マウスカーソルを消す
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Cursor.SetCursor(_cursor, _hotspot, _cursormode);
+    }
+
+    public void OnPointerEnter(PointerEventData data)
+    {
+        if (data.Equals(gameObject.CompareTag("Enemy")))
+        {
+            Cursor.SetCursor(_cursorOnEnemy, _hotspot, _cursormode);
+        }
     }
 
     void Update()
     {
         // Camera.main でメインカメラ（MainCamera タグの付いた Camera）を取得する
         // Camera.ScreenToWorldPoint 関数で、スクリーン座標をワールド座標に変換する
-        //Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //mousePosition.z = 0;    // Z 座標がカメラと同じになっているので、リセットする
-        //this.transform.position = mousePosition;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0;    // Z 座標がカメラと同じになっているので、リセットする
+        this.transform.position = mousePosition;
         
     }
 }

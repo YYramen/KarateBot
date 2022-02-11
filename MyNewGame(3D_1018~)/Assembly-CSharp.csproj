@@ -141,7 +141,7 @@
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperCharacterController.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
     <Compile Include="Assets\Scripts\PlayerDeath.cs" />
-    <Compile Include="Assets\Scripts\CrossHair.cs" />
+    <Compile Include="Assets\Scripts\CursorControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
