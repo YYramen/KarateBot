@@ -47,6 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5920537064232479657}
   - component: {fileID: 1107966914649103126}
+  - component: {fileID: 4002731900761285579}
   m_Layer: 5
   m_Name: MissionSlider
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 8712864947101989725}
   m_HandleRect: {fileID: 0}
@@ -127,6 +128,22 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4002731900761285579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2950129389447452709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68475e45ce846e44cba809b1f16fe0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _missionSlider: {fileID: 1107966914649103126}
+  _clearZone: {fileID: 1620337544071117993, guid: 610247a2992555c40a475afe73725e5b,
+    type: 3}
+  _clearZonePos: {fileID: 0}
 --- !u!1 &3381313855754757432
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +256,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6881591964891317460
 CanvasRenderer:
@@ -263,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
