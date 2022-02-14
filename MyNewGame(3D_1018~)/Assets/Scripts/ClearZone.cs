@@ -10,6 +10,7 @@ public class ClearZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Instantiate(_clearPanel);
+            Destroy(gameObject);
         }
     }
 }
