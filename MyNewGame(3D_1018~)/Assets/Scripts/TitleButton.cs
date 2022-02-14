@@ -24,4 +24,9 @@ public class TitleButton : MonoBehaviour
 		Application.Quit();
 #endif
     }
+
+    public void GotoTitle()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
 }

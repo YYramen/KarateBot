@@ -20,7 +20,6 @@ public class EnemyControl : MonoBehaviour
     [Tooltip("敵の位置を入れる変数")]
     [SerializeField] Transform _enemy = default;
     [SerializeField] Animator _anim = default;
-    //[SerializeField] GameObject _player = default;
     [SerializeField] float _enemySight = 3f;
     [SerializeField] float _interval = 3f;
     [SerializeField] float _timer = 3f;
@@ -55,11 +54,9 @@ public class EnemyControl : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _agent = GetComponent<NavMeshAgent>();
-        //_player = GameObject.FindGameObjectWithTag("Player");
 
         _hp = GetComponent<StatusController>();
         _atk = GetComponent<StatusController>();
-        //_playerAtk = GetComponent<PlayerController>();
         _currentHp = _hp.Health;
 
         _missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
@@ -69,12 +66,6 @@ public class EnemyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //_distance = Vector3.Distance(this.transform.position, _player.transform.position);
-        //if (_distance < _enemySight)
-        //{
-        //    _agent.destination = _player.transform.position;
-        //}
-
         Vector3 pos = _wayPoints[_currentPoint];
         float dis = Vector3.Distance(_enemy.position, PlayerController.Instance.transform.position);
 
@@ -135,15 +126,7 @@ public class EnemyControl : MonoBehaviour
             Instantiate(_deathPrefab, this.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-
-        //HP関係
-        //_hpSlider.value = _currentHp / _hp.Health;
     }
-
-    //public void ViewDamage(int _damage)
-    //{
-    //    _damage = _playerAtk.
-    //}
 
     public void TakeDamage()
     {
@@ -151,8 +134,6 @@ public class EnemyControl : MonoBehaviour
         float damage = PlayerController.Instance.CurrentAttack;
         _currentHp -= damage;
         Debug.Log("敵がプレイヤーから" + damage + "ダメージを受けた");
-        //_damageText.text = damage.ToString();
-        //Instantiate(_damageText, transform.position, transform.rotation);
     }
 
     public void ShowDamage()
@@ -174,7 +155,6 @@ public class EnemyControl : MonoBehaviour
             _timer += Time.deltaTime;
             if (_timer > _interval)
             {
-                //_currentHp -= other.GetComponent<StatusController>().Attack;]
                 TakeDamage();
                 ShowDamage();
                 Debug.Log($"敵の残りHPは{_currentHp}");

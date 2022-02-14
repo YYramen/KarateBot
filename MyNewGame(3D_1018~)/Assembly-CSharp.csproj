@@ -144,6 +144,8 @@
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
     <Compile Include="Assets\Scripts\ShakeText.cs" />
     <Compile Include="Assets\Scripts\TitleButton.cs" />
+    <Compile Include="Assets\Scripts\ClearZone.cs" />
+    <Compile Include="Assets\Scripts\MissionSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
