@@ -17,11 +17,11 @@ public class TitleButton : MonoBehaviour
     float _fadeSpeed = 0.002f;
     public void StartGame()
     {
-        StartCoroutine("FadeOut");
+        StartCoroutine("FadeOutToGame");
         //SceneManager.LoadScene("GameScene");
     }
 
-    IEnumerator FadeOut()
+    IEnumerator FadeOutToGame()
     {
         Color c = _fadePanel.color;
         c.a = _alpha;
@@ -32,11 +32,54 @@ public class TitleButton : MonoBehaviour
             c.a += _fadeSpeed;
             _fadePanel.color = c;
 
-            if(c.a >= 1)
+            if (c.a >= 1)
             {
                 c.a = 1f;
                 _fadePanel.color = c;
                 SceneManager.LoadScene("GameScene");
+                break;
+            }
+        }
+    }
+
+    IEnumerator FadeOutToTitle()
+    {
+        Color c = _fadePanel.color;
+        c.a = _alpha;
+        _fadePanel.color = c;
+        while (true)
+        {
+            yield return null;
+            c.a += _fadeSpeed;
+            _fadePanel.color = c;
+
+            if (c.a >= 1)
+            {
+                c.a = 1f;
+                _fadePanel.color = c;
+                SceneManager.LoadScene("TitleScene");
+                break;
+            }
+        }
+    }
+
+
+    IEnumerator FadeIn()
+    {
+        Color c = _fadePanel.color;
+        c.a = 1;
+        _fadePanel.color = c;
+        while (true)
+        {
+            yield return null;
+            c.a -= _fadeSpeed;
+            _fadePanel.color = c;
+
+            if (c.a <= 0)
+            {
+                c.a = 0f;
+                _fadePanel.color = c;
+                SceneManager.LoadScene("TitleScene");
                 break;
             }
         }
@@ -55,7 +98,8 @@ public class TitleButton : MonoBehaviour
 
     public void GotoTitle()
     {
-        SceneManager.LoadScene("TitleScene");
+        //SceneManager.LoadScene("TitleScene");
+        StartCoroutine("FadeOutToTitle");
     }
 
     public void StartAudio()
