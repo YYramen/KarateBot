@@ -59,7 +59,11 @@ public class EnemyControl : MonoBehaviour
         _atk = GetComponent<StatusController>();
         _currentHp = _hp.Health;
 
-        _missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
+        if (!_missionSlider)
+        {
+            _missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
+        }
+        //_missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
 
     }
 

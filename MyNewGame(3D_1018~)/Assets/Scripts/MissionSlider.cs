@@ -8,6 +8,8 @@ public class MissionSlider : MonoBehaviour
     [SerializeField] Slider _missionSlider = default;
     [SerializeField] GameObject _clearZone = default;
     [SerializeField] Transform _clearZonePos = default;
+    [SerializeField] Text _missionText = default;
+    [SerializeField] Transform _textpos = default;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class MissionSlider : MonoBehaviour
         if(_missionSlider.value == 1)
         {
             Instantiate(_clearZone, _clearZonePos);
+            Instantiate(_missionText, _textpos);
             Destroy(gameObject);
         }
     }
