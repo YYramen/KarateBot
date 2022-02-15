@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\PlayerDeath.cs" />
     <Compile Include="Assets\True Explosions\System\Scripts\effects\exploderComponents\ExploderComponent.cs" />
     <Compile Include="Assets\True Explosions\System\Scripts\effects\exploderComponents\LightComponent.cs" />
+    <Compile Include="Assets\Scripts\MissionSlider.cs" />
     <Compile Include="Assets\ExplosiveLLC\Warrior FREE\Code\AnimatorParentMove.cs" />
     <Compile Include="Assets\Scripts\UIRotate.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationClip.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\Singleton.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\True Explosions\System\Scripts\effects\PseudoVolumetricExplosion.cs" />
+    <Compile Include="Assets\Scripts\ClearZone.cs" />
     <Compile Include="Assets\Scripts\StatusController.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperMath.cs" />
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationBehaviour.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Assets\True Explosions\System\Scripts\effects\exploderComponents\ParticleComponent.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderTrack.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperCollider.cs" />
+    <Compile Include="Assets\Scripts\ShakeText.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlClip.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\ExplosiveLLC\Warrior FREE\Code\WarriorData.cs" />
@@ -139,19 +142,17 @@
     <Compile Include="Assets\DefaultPlayables\Video\VideoPlayableBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\Video\VideoSchedulerPlayableBehaviour.cs" />
+    <Compile Include="Assets\Scripts\TitleButton.cs" />
     <Compile Include="Assets\Scripts\EnemyDeath.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperCharacterController.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
-    <Compile Include="Assets\Scripts\ShakeText.cs" />
-    <Compile Include="Assets\Scripts\TitleButton.cs" />
-    <Compile Include="Assets\Scripts\ClearZone.cs" />
-    <Compile Include="Assets\Scripts\MissionSlider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\IdiaSoftware\Blades&amp;Bludgeonings-Free\Documentation-Free.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
