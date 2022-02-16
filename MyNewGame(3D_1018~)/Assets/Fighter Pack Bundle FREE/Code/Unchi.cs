@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraControl : MonoBehaviour {
+public class Unchi : MonoBehaviour {
 
 	public float fastSpeed = 0.3f;
 	public float cameraSpeed = .08f;

@@ -88,7 +88,7 @@
     <Compile Include="Assets\DefaultPlayables\TimeDilation\TimeDilationBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\TextSwitcher\TextSwitcherTrack.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlMixerBehaviour.cs" />
-    <Compile Include="Assets\Fighter Pack Bundle FREE\Code\CameraControl.cs" />
+    <Compile Include="Assets\Fighter Pack Bundle FREE\Code\Unchi.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlTrack.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\CameraSwitch.cs" />
