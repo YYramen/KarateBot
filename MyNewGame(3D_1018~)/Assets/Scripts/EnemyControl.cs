@@ -28,7 +28,7 @@ public class EnemyControl : MonoBehaviour
     [SerializeField] StatusController _hp;
     [SerializeField] StatusController _atk;
     [SerializeField] Slider _hpSlider = default;
-    [SerializeField] float _giveExp = 5f;
+    [SerializeField] float _giveExp = 1f;
     float _currentHp;
 
     //ダメージ表示
