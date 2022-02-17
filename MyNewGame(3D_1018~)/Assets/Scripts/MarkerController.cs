@@ -19,6 +19,10 @@ public class MarkerController : MonoBehaviour
 
     void Update()
     {
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
         // クリックで Ray を飛ばす
         if (Input.GetButtonDown("Fire1"))
         {

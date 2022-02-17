@@ -370,7 +370,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96736822}
-  m_LocalRotation: {x: 0.19811463, y: -0.6798683, z: 0.19880736, w: 0.67749935}
+  m_LocalRotation: {x: 0.020181244, y: -0.8554929, z: 0.033437114, w: 0.5163397}
   m_LocalPosition: {x: 85.04, y: 16.5, z: 50.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1677,6 +1677,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1750153983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1465998640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 17973856844119452, guid: 5d794455b2f886441a34fd907796336f,
+    type: 3}
+  m_PrefabInstance: {fileID: 6336338979616574686}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62668cda19395904195369ddc79fc2cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1480350973
 GameObject:
   m_ObjectHideFlags: 0
@@ -5962,6 +5974,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4083497428771699820}
     m_Modifications:
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1465998640}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: TitleButton, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 17973856844119453, guid: 5d794455b2f886441a34fd907796336f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2310604438747411307, guid: 5d794455b2f886441a34fd907796336f,
         type: 3}
       propertyPath: m_Enabled

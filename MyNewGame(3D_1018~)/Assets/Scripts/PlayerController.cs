@@ -87,6 +87,10 @@ public class PlayerController : Singleton<PlayerController>
 
     void Update()
     {
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
         // プレイヤーの基本動作(移動、通常攻撃)
         // m_target が移動したら Navmesh Agent を使って移動させる
         if (Vector3.Distance(_changedTargetPosition, _target.position) > Mathf.Epsilon) // _target が移動したら

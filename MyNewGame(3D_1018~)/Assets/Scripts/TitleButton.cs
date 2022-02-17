@@ -21,6 +21,14 @@ public class TitleButton : MonoBehaviour
         //SceneManager.LoadScene("GameScene");
     }
 
+    public void SetTime()
+    {
+        if(Time.timeScale != 1)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
     IEnumerator FadeOutToGame()
     {
         Color c = _fadePanel.color;

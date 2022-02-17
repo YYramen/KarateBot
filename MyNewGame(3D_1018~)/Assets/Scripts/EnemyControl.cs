@@ -67,6 +67,10 @@ public class EnemyControl : MonoBehaviour
 
     void Update()
     {
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
         Vector3 pos = _wayPoints[_currentPoint];
         float dis = Vector3.Distance(_enemy.position, PlayerController.Instance.transform.position);
 
