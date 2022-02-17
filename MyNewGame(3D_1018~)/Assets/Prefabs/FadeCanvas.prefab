@@ -191,3 +191,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fadePanel: {fileID: 8669335893427558506}
+  _button: {fileID: 4143449039768341527, guid: 07e439a6ace2bb24ab2b638e3d7e60d9, type: 3}
+  _panel: {fileID: 8669335894681730773}

@@ -7,18 +7,14 @@ using UnityEngine.UI;
 /// <summary>
 /// パネルをフェードさせるコンポーネント
 /// </summary>
-public class FadePanel : MonoBehaviour
+public class EscCanvas : MonoBehaviour
 {
     [SerializeField] Image _fadePanel = default;
+    [SerializeField] GameObject _button = default;
 
     float _alpha = 0.0f;
     float _fadeSpeed = 0.002f;
     float _fadeOutSpeed = 10f;
-    
-    void Start()
-    {
-        StartCoroutine("FadeIn");
-    }
 
     private void Update()
     {
@@ -43,6 +39,7 @@ public class FadePanel : MonoBehaviour
             {
                 c.a = 1f;
                 _fadePanel.color = c;
+                Instantiate(_button, this.transform);
                 break;
             }
         }

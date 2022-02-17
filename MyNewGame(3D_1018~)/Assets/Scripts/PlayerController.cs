@@ -70,6 +70,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] GameObject _death = default;
 
     NavMeshAgent _agent = default;
+
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -100,14 +101,6 @@ public class PlayerController : Singleton<PlayerController>
             _anim.SetFloat("Speed", _agent.velocity.magnitude);
             _anim.SetBool("Jump", _agent.isOnOffMeshLink);
         }
-
-        // Escape キーを押したら初期位置に戻る(多分これそのうち消す)
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Debug.Log("Escapeが押された、初期位置に戻る");
-            this.transform.position = _firstPosition;
-        }
-
 
         // スキル関係
         // スキルのクールダウンゲージの処理
@@ -173,7 +166,7 @@ public class PlayerController : Singleton<PlayerController>
             _level++;
         }
 
-        if(_currentHp < 0)
+        if (_currentHp < 0)
         {
             _currentHp = 0;
             Debug.Log("プレイヤーが倒された");
@@ -223,7 +216,7 @@ public class PlayerController : Singleton<PlayerController>
             _anim.SetTrigger("Attack"); // 攻撃フラグを true にする
             Debug.Log($"プレイヤーが{other.name}と接触");
             this.transform.LookAt(other.transform.position); // コライダー内の敵を向くようにする
-    
+
             // 攻撃を受ける処理
             _firstInterval += Time.deltaTime;
             if (_firstInterval > _interval)

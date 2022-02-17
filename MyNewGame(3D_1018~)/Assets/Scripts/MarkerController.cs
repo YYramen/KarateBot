@@ -42,10 +42,5 @@ public class MarkerController : MonoBehaviour
                 Debug.DrawRay(ray.origin, ray.direction * _debugRayLength);
             }
         }
-
-        if(Input.GetButtonDown("Cancel"))
-        {
-            _marker.transform.position = _firstPosition;
-        }
     }
 }

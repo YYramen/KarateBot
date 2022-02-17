@@ -63,11 +63,8 @@ public class EnemyControl : MonoBehaviour
         {
             _missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
         }
-        //_missionSlider = GameObject.Find("MissionSlider").GetComponent<Slider>();
-
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 pos = _wayPoints[_currentPoint];
