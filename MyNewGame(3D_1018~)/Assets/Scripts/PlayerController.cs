@@ -96,7 +96,7 @@ public class PlayerController : Singleton<PlayerController>
         if (Vector3.Distance(_changedTargetPosition, _target.position) > Mathf.Epsilon) // _target が移動したら
         {
             _changedTargetPosition = _target.position; // 移動先の座標を保存する
-            _agent.SetDestination(_changedTargetPosition); // Navmesh Agent に目的地をセットする（Vector3 で座標を設定していることに注意。Transform でも GameObject でもなく、Vector3 で目的地を指定する）
+            _agent.SetDestination(_changedTargetPosition); // Navmesh Agent に目的地をセットする
         }
 
         // _animator がアサインされていたら Animator Controller にパラメーターを設定する

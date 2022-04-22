@@ -133,6 +133,9 @@ public class EnemyControl : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 攻撃を受ける処理
+    /// </summary>
     public void TakeDamage()
     {
         //シングルトンクラスのPlayerControllerの攻撃力を参照している
@@ -141,6 +144,9 @@ public class EnemyControl : MonoBehaviour
         Debug.Log("敵がプレイヤーから" + damage + "ダメージを受けた");
     }
 
+    /// <summary>
+    /// 受けたダメージをシーン上に表示する処理
+    /// </summary>
     public void ShowDamage()
     {
         var go = Instantiate<GameObject>(_damageText, _uiPos.position, Quaternion.identity, _damageCanvas.transform);

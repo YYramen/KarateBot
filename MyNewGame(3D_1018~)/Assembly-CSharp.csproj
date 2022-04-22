@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\SkillPanel.cs" />
     <Compile Include="Assets\DefaultPlayables\ScreenFader\ScreenFaderMixerBehaviour.cs" />
     <Compile Include="Assets\Scripts\EnemyControl.cs" />
+    <Compile Include="Assets\Scripts\EscCanvas.cs" />
     <Compile Include="Assets\Scripts\EnemyGenerator.cs" />
     <Compile Include="Assets\DefaultPlayables\LightControl\LightControlBehaviour.cs" />
     <Compile Include="Assets\DefaultPlayables\TransformTween\TransformTweenMixerBehaviour.cs" />
@@ -149,10 +150,9 @@
     <Compile Include="Assets\Scripts\TitleButton.cs" />
     <Compile Include="Assets\Scripts\EnemyDeath.cs" />
     <Compile Include="Assets\ExplosiveLLC\SuperCharacterController\SuperCharacterController\Core\SuperCharacterController.cs" />
+    <Compile Include="Assets\Scripts\EscButton.cs" />
     <Compile Include="Assets\DefaultPlayables\NavMeshAgentControl\NavMeshAgentControlClip.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
-    <Compile Include="Assets\Scripts\EscCanvas.cs" />
-    <Compile Include="Assets\Scripts\EscButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />

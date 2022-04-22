@@ -29,7 +29,7 @@ public class MarkerController : MonoBehaviour
             // カメラの位置 → マウスでクリックした場所に Ray を飛ばすように設定する
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            // Ray が当たったかどうかで異なる処理をする（Physics.Raycast() にはたくさんオーバーロードがあるので注意すること）
+            // Ray が当たったかどうかで異なる処理をする
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 // Ray が当たった時は、当たった座標まで赤い線を引く
